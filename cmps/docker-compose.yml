@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/code
+      - logvolume01:/var/log
+    links:
+      - redis
+  redis:
+    image: redis
+    volumes:
+      - v_redis:/data
+volumes:
+  logvolume01:
+  v_redis:
